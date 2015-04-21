@@ -13,20 +13,17 @@ else:
 #list_output = subprocess.Popen(["ls", "-l", "{0}".format(argument)], stdout=subprocess.PIPE).communicate()
 list_output = subprocess.Popen(popen_call, stdout=subprocess.PIPE).communicate()
 
-print(list_output)
+# print(list_output)
 list_output = list(list_output)
-print("")
+# print("")
 list_output = list_output[:-1]
-print(list_output)
-print("")
+# print(list_output)
+# print("")
 
-#list_output = list_output[:-1]
 list_output = list_output[0].split("\n")
 list_output.pop()
-print(list_output)
-#print(list_output)
-#list_output.pop()
-
-#print(list_output[1])
-# for i in list_output[:-1]:
-#     print(i)
+if list_output[0].startswith("total"):
+    list_output.pop(0)
+print("")
+for i in list_output:
+    print(i)

@@ -7,6 +7,10 @@ perm_codes = {
     "r" : "read",
     "w" : "write",
     "x" : "execute",
+    "-" : None
+}
+
+object_type = {
     "-" : "regular file",
     "d" : "directory",
     "l" : "symbolic link"
@@ -24,7 +28,24 @@ def perm_parser(
         last_modified_time,
         name_of_file_or_dir):
     print("Permissions for: {0}".format(name_of_file_or_dir))
-    
+    print("Type: {0}".format(object_type[file_type].capitalize()))
+    def read_write_execute_finder(perm_group_string):
+        current_perm_string = ""
+        all_current_perms = []
+        permission_count = 0  # number of non "-" permissions
+        for index, value in enumerate(perm_group_string):
+            print(index, value)
+            current_perm = perm_codes[value]
+            print(current_perm)
+            if current_perm != None:
+                all_current_perms.append(current_perm)
+        print(all_current_perms)
+
+        return current_perm_string
+    owner_perm_string = read_write_execute_finder(owner_perms)
+    print("Owner permissions: {0}".format(owner_perm_string))
+
+
 
 
 if len(sys.argv) > 1:
@@ -73,9 +94,19 @@ for i in list_output:
         last_modified_time_or_year)
     name_of_file_or_dir = current_ls_line[8]
     print("")
-    print(name_of_file_or_dir)
-    print("Owner permissions: ")
-
+    # print(name_of_file_or_dir)
+    # print("Owner permissions: ")
+    perm_parser(
+        file_type,
+        owner_perms,
+        group_perms,
+        other_perms,
+        number_hard_links,
+        owner,
+        group_belongs,
+        file_size_in_blocks,
+        last_modified_time,
+        name_of_file_or_dir)
 
     print("")
 print("")

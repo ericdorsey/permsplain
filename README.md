@@ -113,3 +113,13 @@ Then restart Terminal, and run like this:
 ```
 $ permsplain.py index.html
 ```
+
+___
+## Misc.
+
+
+**Wait!** Isn't [parsing `ls`](http://mywiki.wooledge.org/ParsingLs) a [bad idea?](http://unix.stackexchange.com/questions/128985/why-not-parse-ls) 
+
+Yes, this script parses `ls` to provide context aware permissions explanations. 
+
+But bad is relative. If you have newline (`\n`) characters or other strangeness in your filenames / directories, yes, both `ls` and this script are going to behave strangely. 
